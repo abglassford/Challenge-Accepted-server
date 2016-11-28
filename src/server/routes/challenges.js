@@ -1,38 +1,38 @@
 const express = require('express');
 const router = express.Router();
 const knex = require('../db/knex');
-const {getOne, getAll, del, postUser, updateUser} = require('../queries/queries');
+const {getOne, getAll, del, postChallenge, updateChallenge} = require('../queries/queries');
 
 router.get('/', (req, res, next) => {
-  getAll('users')
+  getAll('challenges')
   .then((data) => {
     res.json({data: data});
   });
 });
 
 router.get('/:id', (req, res, next) => {
-  getOne('users', req.params.id)
+  getOne('challenges', req.params.id)
   .then((data) => {
     res.json({data: data});
   });
 });
 
 router.delete('/:id', (req, res, next) => {
-  del('users', req.params.id)
+  del('challenges', req.params.id)
   .then(() => {
     res.status(201).json({message: 'success!'});
   });
 });
 
 router.post('/', (req, res, next) => {
-  postUser(req.body)
+  postChallenge(req.body)
   .then(() => {
     res.status(200).json({message: 'success!'});
   });
 });
 
 router.put('/:id', (req, res, next) => {
-  updateUser(req.body, req.params.id)
+  updateChallenge(req.body, req.params.id)
   .then(() => {
     res.status(201).json({message: 'success!'});
   });
