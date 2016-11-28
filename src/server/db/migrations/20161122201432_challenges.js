@@ -1,4 +1,3 @@
-
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('challenges', (table) => {
     table.increments();
@@ -6,7 +5,7 @@ exports.up = function(knex, Promise) {
     table.text('description').notNullable();
     table.boolean('completed').notNullable();
     table.boolean('accepted').notNullable();
-  })
+  });
 };
 
 exports.down = function(knex, Promise) {

@@ -30,7 +30,7 @@ exports.seed = function(knex, Promise) {
           description: faker.lorem.sentences(),
           completed: faker.random.boolean(),
           accepted: faker.random.boolean()
-        }),
+        })
       ]);
     });
 };
