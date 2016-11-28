@@ -7,6 +7,9 @@ router.get('/', (req, res, next) => {
   getAll('users')
   .then((data) => {
     res.json({data: data});
+  })
+  .catch((err) => {
+    res.json({data: err});
   });
 });
 

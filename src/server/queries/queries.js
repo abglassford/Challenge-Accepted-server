@@ -1,20 +1,20 @@
-knex = require('../db/knex');
+const knex = require('../db/knex');
 
 function getOne (table, id) {
   return knex.select('*')
   .from(`${table}`)
-  .where('id', id)
+  .where('id', id);
 }
 
 function getAll (table) {
   return knex.select('*')
-  .from(`${table}`)
+  .from(`${table}`);
 }
 
 function del (table, id) {
   return knex(`${table}`)
   .where('id', id)
-  .del()
+  .del();
 }
 
 function postUser (body) {
@@ -23,7 +23,7 @@ function postUser (body) {
     first_name: body.first_name,
     last_name: body.last_name,
     email: body.email
-  })
+  });
 }
 
 function updateUser (body, id) {
@@ -33,7 +33,7 @@ function updateUser (body, id) {
     first_name: body.first_name,
     last_name: body.last_name,
     email: body.email
-  })
+  });
 }
 
 function postChallenge (body) {
@@ -43,7 +43,7 @@ function postChallenge (body) {
     description: body.description,
     completed: body.completed,
     accepted: body.accepted
-  })
+  });
 }
 
 function updateChallenge (body, id) {
@@ -54,7 +54,7 @@ function updateChallenge (body, id) {
     description: body.description,
     completed: body.completed,
     accepted: body.accepted
-  })
+  });
 }
 
 module.exports = {
@@ -65,4 +65,4 @@ module.exports = {
   updateUser,
   postChallenge,
   updateChallenge
-}
+};
