@@ -27,18 +27,18 @@ router.delete('/:id', (req, res, next) => {
   });
 });
 
-router.post('/', (req, res, next) => {
-  postFB(req.body)
+router.post('/new', (req, res, next) => {
+  postUser(req.body)
   .then(() => {
     res.status(200).json({message: 'success!'});
   })
   .catch((err) => {
-    res.status(404).json({message: 'user not found'})
+    res.status(404).json({message: 'Something went wrong'})
   })
 });
 
-router.post('/new', (req, res, next) => {
-  postUser(req.body)
+router.post('/', (req, res, next) => {
+  postFB(req.body)
   .then(() => {
     res.status(200).json({message: 'success!'});
   })
