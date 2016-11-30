@@ -26,6 +26,12 @@ function postUser (body) {
   });
 }
 
+function postFB (body) {
+  return knex('users')
+  .where('email', body.email)
+  .insert('fb_obj', JSON.stringify(body));
+}
+
 function updateUser (body, id) {
   return knex('users')
   .where('id', id)
