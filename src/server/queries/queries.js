@@ -31,8 +31,8 @@ function postFB (body) {
   return knex('users')
   .where('email', body.email)
   .insert({
-    'fb_obj', JSON.stringify(body),
-    'fb_token', body.accessToken
+    'fb_obj': JSON.stringify(body),
+    'fb_token': body.accessToken
   });
 }
 
