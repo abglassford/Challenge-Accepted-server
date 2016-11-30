@@ -21,8 +21,8 @@ function postUser (body) {
   return knex('users')
   .insert({
     name: body.name,
-    email: body.email
-    fb_token: body.accessToken
+    email: body.email,
+    fb_token: body.accessToken,
     fb_obj: body
   });
 }
