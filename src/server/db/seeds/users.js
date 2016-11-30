@@ -6,8 +6,6 @@ exports.seed = function(knex, Promise) {
     .then(function () {
       return Promise.all([
         knex('users').insert({
-          name: faker.name.firstName(),
-          email: faker.internet.email(),
           fb_obj: 'stuff',
           fb_token: '12345'
         })
