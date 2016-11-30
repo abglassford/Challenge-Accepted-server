@@ -73,5 +73,6 @@ module.exports = {
   postUser,
   updateUser,
   postChallenge,
-  updateChallenge
+  updateChallenge,
+  postFB
 };
