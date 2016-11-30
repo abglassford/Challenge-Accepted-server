@@ -8,24 +8,10 @@ exports.seed = function(knex, Promise) {
       return Promise.all([
         // Inserts seed entries
         knex('users').insert({
-          first_name: faker.name.firstName(),
-          last_name: faker.name.lastName(),
-          email: faker.internet.email()
-        }),
-        knex('users').insert({
-          first_name: faker.name.firstName(),
-          last_name: faker.name.lastName(),
-          email: faker.internet.email()
-        }),
-        knex('users').insert({
-          first_name: faker.name.firstName(),
-          last_name: faker.name.lastName(),
-          email: faker.internet.email()
-        }),
-        knex('users').insert({
-          first_name: faker.name.firstName(),
-          last_name: faker.name.lastName(),
-          email: faker.internet.email()
+          name: faker.name.firstName(),
+          email: faker.internet.email(),
+          fb_obj: 'stuff',
+          fb_token: '12345'
         })
       ]);
     });

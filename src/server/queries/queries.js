@@ -20,24 +20,27 @@ function del (table, id) {
 function postUser (body) {
   return knex('users')
   .insert({
-    first_name: body.first_name,
-    last_name: body.last_name,
+    name: body.name,
     email: body.email
+    fb_token: body.accessToken
+    fb_obj: body
   });
 }
 
 function postFB (body) {
   return knex('users')
   .where('email', body.email)
-  .insert('fb_obj', JSON.stringify(body));
+  .insert({
+    'fb_obj', JSON.stringify(body),
+    'fb_token', body.accessToken
+  });
 }
 
 function updateUser (body, id) {
   return knex('users')
   .where('id', id)
   .update({
-    first_name: body.first_name,
-    last_name: body.last_name,
+    name: body.name,
     email: body.email
   });
 }
