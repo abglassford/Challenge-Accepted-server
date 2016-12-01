@@ -28,13 +28,16 @@ router.delete('/:id', (req, res, next) => {
 });
 
 router.post('/new', (req, res, next) => {
+  console.log('hit /new');
   postUser(req.body)
   .then(() => {
+    console.log('hit /new success');
     res.status(200).json({message: 'success!'});
   })
   .catch((err) => {
-    res.status(404).json({message: 'Something went wrong'})
-  })
+    console.log(err);
+    res.status(404).json({message: 'Something went wrong'});
+  });
 });
 
 router.post('/', (req, res, next) => {
@@ -43,8 +46,8 @@ router.post('/', (req, res, next) => {
     res.status(200).json({message: 'success!'});
   })
   .catch((err) => {
-    res.status(404).json({message: 'user not found'})
-  })
+    res.status(404).json({message: 'user not found'});
+  });
 });
 
 router.put('/:id', (req, res, next) => {

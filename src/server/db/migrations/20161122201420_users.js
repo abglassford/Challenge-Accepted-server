@@ -1,8 +1,8 @@
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('users', (table) => {
     table.increments();
-    table.string('fb_token').unique();
-    table.string('fb_obj');
+    table.string('fb_token').unique().notNullable();
+    table.text('fb_obj');
   });
 };
 

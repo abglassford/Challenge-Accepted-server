@@ -29,7 +29,8 @@ function postFB (body) {
   return knex('users')
   .where('fb_token', body.accessToken)
   .insert({
-    'fb_obj': JSON.stringify(body)
+    fb_token: body.accessToken,
+    fb_obj: JSON.stringify(body)
   });
 }
 
