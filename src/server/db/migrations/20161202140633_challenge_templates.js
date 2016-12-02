@@ -1,13 +1,13 @@
+
 exports.up = function(knex, Promise) {
-  return knex.schema.createTable('challenges', (table) => {
+  return knex.schema.createTable('challenge_templates', table => {
     table.increments();
     table.string('name').notNullable();
     table.text('description').notNullable();
-    table.boolean('completed').notNullable();
-    table.boolean('accepted').notNullable();
+    table.integer('points').notNullable();
   });
 };
 
 exports.down = function(knex, Promise) {
-  return knex.schema.dropTable('challenges');
+  return knex.schema.dropTable('challenge_template');
 };

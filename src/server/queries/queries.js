@@ -20,17 +20,8 @@ function del (table, id) {
 function postUser (body) {
   return knex('users')
   .insert({
-    fb_token: body.accessToken,
-    fb_obj: body
-  });
-}
-
-function postFB (body) {
-  return knex('users')
-  .where('fb_token', body.accessToken)
-  .insert({
-    fb_token: body.accessToken,
-    fb_obj: JSON.stringify(body)
+    fb_id: body.id,
+    email: body.email
   });
 }
 
@@ -38,7 +29,6 @@ function updateUser (body, id) {
   return knex('users')
   .where('id', id)
   .update({
-    name: body.name,
     email: body.email
   });
 }
@@ -48,8 +38,8 @@ function postChallenge (body) {
   .insert({
     name: body.name,
     description: body.description,
-    completed: body.completed,
-    accepted: body.accepted
+    points: body.points,
+    progress: body.progress
   });
 }
 
@@ -71,6 +61,5 @@ module.exports = {
   postUser,
   updateUser,
   postChallenge,
-  updateChallenge,
-  postFB
+  updateChallenge
 };

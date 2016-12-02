@@ -25,6 +25,7 @@ router.delete('/:id', (req, res, next) => {
 });
 
 router.post('/', (req, res, next) => {
+  console.log(req.body);
   postChallenge(req.body)
   .then(() => {
     res.status(200).json({message: 'success!'});

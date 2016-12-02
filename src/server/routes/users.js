@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const knex = require('../db/knex');
-const {getOne, getAll, del, postUser, postFB, updateUser} = require('../queries/queries');
+const {getOne, getAll, del, postUser, updateUser} = require('../queries/queries');
 
 router.get('/', (req, res, next) => {
   getAll('users')
@@ -27,26 +27,17 @@ router.delete('/:id', (req, res, next) => {
   });
 });
 
-router.post('/new', (req, res, next) => {
+router.post('/', (req, res, next) => {
   console.log('hit /new');
   postUser(req.body)
   .then(() => {
-    console.log('hit /new success');
     res.status(200).json({message: 'success!'});
   })
   .catch((err) => {
-    console.log(err);
-    res.status(404).json({message: 'Something went wrong'});
-  });
-});
-
-router.post('/', (req, res, next) => {
-  postFB(req.body)
-  .then(() => {
-    res.status(200).json({message: 'success!'});
-  })
-  .catch((err) => {
-    res.status(404).json({message: 'user not found'});
+    res.status(404).json({
+      message: 'Something went wrong',
+      data: err
+    });
   });
 });
 
