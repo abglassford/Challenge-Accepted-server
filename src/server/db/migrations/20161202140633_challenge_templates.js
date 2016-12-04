@@ -9,5 +9,5 @@ exports.up = function(knex, Promise) {
 };
 
 exports.down = function(knex, Promise) {
-  return knex.schema.dropTable('challenge_template');
+  return knex.schema.dropTable('challenge_templates');
 };

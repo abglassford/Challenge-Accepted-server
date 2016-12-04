@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const knex = require('../db/knex');
-const {getOne, getAll, del, postChallenge, updateChallenge} = require('../queries/queries');
+const {getOne, getAll, del, postChallenge, postChallenge_template, updateChallenge} = require('../queries/queries');
 
 router.get('/', (req, res, next) => {
   console.log('hey');
@@ -27,10 +27,11 @@ router.delete('/:id', (req, res, next) => {
 
 router.post('/', (req, res, next) => {
   console.log(req.body);
-  postChallenge(req.body)
+  postChallenge_template(req.body)
   .then(() => {
     res.status(200).json({message: 'success!'});
-  });
+  })
+  .catch(err => res.status(404).json({err: err}));
 });
 
 router.put('/:id', (req, res, next) => {

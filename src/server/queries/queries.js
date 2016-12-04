@@ -35,10 +35,19 @@ function updateUser (body, id) {
 function postChallenge (body) {
   return knex('challenges')
   .insert({
+    user_id: body.user_id,
+    challenge_id: body.challenge_id,
+    completed: body.completed,
+    progress: body.progress
+  });
+}
+
+function postChallenge_template (body) {
+  return knex('challenge_templates')
+  .insert({
     name: body.name,
     description: body.description,
-    points: body.points,
-    progress: body.progress
+    points: body.points
   });
 }
 
@@ -53,6 +62,12 @@ function updateChallenge (body, id) {
   });
 }
 
+function getAllChallenges (user_id) {
+  return knex.select('*')
+  .from('challenges')
+  .innerJoin('challenge_templates', 'challenge_id', 'challenges.id')
+}
+
 module.exports = {
   getOne,
   getAll,
@@ -60,5 +75,7 @@ module.exports = {
   postUser,
   updateUser,
   postChallenge,
-  updateChallenge
+  postChallenge_template,
+  updateChallenge,
+  getAllChallenges
 };
