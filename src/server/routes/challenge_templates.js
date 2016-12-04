@@ -4,7 +4,6 @@ const knex = require('../db/knex');
 const {getOne, getAll, del, postChallenge, postChallenge_template, updateChallenge} = require('../queries/queries');
 
 router.get('/', (req, res, next) => {
-  console.log('hey');
   getAll('challenge_templates')
   .then((data) => {
     res.json({data: data});
