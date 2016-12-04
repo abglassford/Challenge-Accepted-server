@@ -1,42 +1,23 @@
-
 const faker = require('faker');
 
 exports.seed = function(knex, Promise) {
   return knex('challenges').del()
     .then(function () {
       return Promise.all([
-        // Inserts seed entries
         knex('challenge_templates').insert({
-          name: faker.name.firstName(),
-          description: faker.lorem.sentences(),
-          points: 5,
-          progress: 3,
-          completed: false,
-          accepted: true
+          name: 'Mr. Nice Guy',
+          description: 'Do something nice for someone',
+          points: 2,
         }),
         knex('challenge_templates').insert({
-          name: faker.name.firstName(),
-          description: faker.lorem.sentences(),
-          points: 5,
-          progress: 10,
-          completed: false,
-          accepted: true
+          name: 'Get Learned',
+          description: 'Read a book',
+          points: 4,
         }),
         knex('challenge_templates').insert({
-          name: faker.name.firstName(),
-          description: faker.lorem.sentences(),
-          points: 5,
-          progress: 1,
-          completed: false,
-          accepted: true
-        }),
-        knex('challenge_templates').insert({
-          name: faker.name.firstName(),
-          description: faker.lorem.sentences(),
-          points: 5,
-          progress: 6,
-          completed: false,
-          accepted: true
+          name: 'Take It In',
+          description: 'Spend 5 minutes of every hour outside',
+          points: 3,
         })
       ]);
     });
