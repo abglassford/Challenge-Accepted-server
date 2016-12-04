@@ -4,21 +4,22 @@ const knex = require('../db/knex');
 const {getOne, getAll, del, postChallenge, updateChallenge} = require('../queries/queries');
 
 router.get('/', (req, res, next) => {
-  getAll('challenges')
+  console.log('hey');
+  getAll('challenge_templates')
   .then((data) => {
     res.json({data: data});
   });
 });
 
 router.get('/:id', (req, res, next) => {
-  getOne('challenges', req.params.id, 'id')
+  getOne('challenge_templates', req.params.id, 'id')
   .then((data) => {
     res.json({data: data});
   });
 });
 
 router.delete('/:id', (req, res, next) => {
-  del('challenges', req.params.id)
+  del('challenge_templates', req.params.id)
   .then(() => {
     res.status(201).json({message: 'success!'});
   });

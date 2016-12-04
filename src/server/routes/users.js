@@ -3,6 +3,10 @@ const router = express.Router();
 const knex = require('../db/knex');
 const {getOne, getAll, del, postUser, updateUser} = require('../queries/queries');
 
+function Exception (message) {
+  this.message = message
+}
+
 router.get('/', (req, res, next) => {
   getAll('users')
   .then((data) => {
@@ -14,22 +18,25 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/:id', (req, res, next) => {
-  getOne('users', req.params.id)
+  getOne('users', req.params.id, 'fb_id')
   .then((data) => {
     res.json({data: data});
-  });
+  })
+  .catch(err => {
+    res.status(404).json({err: err})
+  })
 });
 
 router.delete('/:id', (req, res, next) => {
   del('users', req.params.id)
   .then(() => {
     res.status(201).json({message: 'success!'});
-  });
+  })
+  .catch(err => res.status(404).json({err: err}))
 });
 
-router.post('/', (req, res, next) => {
-  console.log('hit /new');
-  postUser(req.body)
+router.post('/:id', (req, res, next) => {
+  postUser(req.params.id)
   .then(() => {
     res.status(200).json({message: 'success!'});
   })

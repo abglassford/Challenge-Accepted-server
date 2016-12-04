@@ -7,17 +7,17 @@ exports.seed = function(knex, Promise) {
         knex('challenge_templates').insert({
           name: 'Mr. Nice Guy',
           description: 'Do something nice for someone',
-          points: 2,
+          points: 2
         }),
         knex('challenge_templates').insert({
           name: 'Get Learned',
           description: 'Read a book',
-          points: 4,
+          points: 4
         }),
         knex('challenge_templates').insert({
           name: 'Take It In',
           description: 'Spend 5 minutes of every hour outside',
-          points: 3,
+          points: 3
         })
       ]);
     });

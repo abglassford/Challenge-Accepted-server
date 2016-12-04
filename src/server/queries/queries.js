@@ -1,9 +1,9 @@
 const knex = require('../db/knex');
 
-function getOne (table, id) {
+function getOne (table, id, table_id) {
   return knex.select('*')
   .from(`${table}`)
-  .where('id', id);
+  .where(`${table_id}`, id);
 }
 
 function getAll (table) {
@@ -17,11 +17,10 @@ function del (table, id) {
   .del();
 }
 
-function postUser (body) {
+function postUser (id) {
   return knex('users')
   .insert({
-    fb_id: body.id,
-    email: body.email
+    fb_id: id
   });
 }
 
