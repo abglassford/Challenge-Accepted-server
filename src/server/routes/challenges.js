@@ -60,17 +60,19 @@ router.delete('/:id', (req, res, next) => {
 });
 
 router.post('/', (req, res, next) => {
-  console.log(req.body);
   postChallenge(req.body)
   .then(() => {
     res.status(200).json({message: 'success!'});
   });
 });
 
-router.put('/:id', (req, res, next) => {
-  updateChallenge(req.body, req.params.id)
-  .then(() => {
-    res.status(201).json({message: 'success!'});
+router.put('/', (req, res, next) => {
+  updateChallenge(req.body)
+  .then((data) => {
+    res.status(201).json({
+      message: 'success!',
+      data: data
+    });
   });
 });
 

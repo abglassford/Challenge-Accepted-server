@@ -52,15 +52,14 @@ function postChallenge_template (body) {
   });
 }
 
-function updateChallenge (body, id) {
+function updateChallenge (body) {
   return knex('challenges')
-  .where('id', id)
+  .where('challenge_id', body.challenge_id)
+  .andWhere('user_id', body.user_id)
   .update({
-    name: body.name,
-    description: body.description,
-    completed: body.completed,
-    accepted: body.accepted
-  });
+    progress: body.progress
+  })
+  .returning('*');
 }
 
 function getAllChallenges (user_id) {
