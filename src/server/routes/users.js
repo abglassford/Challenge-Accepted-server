@@ -31,8 +31,9 @@ router.delete('/:id', (req, res, next) => {
   .catch(err => res.status(404).json({err: err}));
 });
 
-router.post('/:id', (req, res, next) => {
-  postUser(req.params.id)
+router.post('/', (req, res, next) => {
+  console.log(req.body);
+  postUser(req.body)
   .then(() => {
     res.status(200).json({message: 'success!'});
   })

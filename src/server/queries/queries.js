@@ -17,10 +17,11 @@ function del (table, id) {
   .del();
 }
 
-function postUser (id) {
+function postUser (body) {
   return knex('users')
   .insert({
-    fb_id: id
+    fb_id: body.fb_id,
+    email: body.email
   });
 }
 
