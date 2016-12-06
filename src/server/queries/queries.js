@@ -70,6 +70,15 @@ function getAllChallenges (user_id) {
   .innerJoin('challenge_templates', 'challenge_id', 'challenges.id');
 }
 
+function getAllUserData (user_id) {
+  return knex.select('*')
+  .from('users')
+  .where('fb_id', user_id)
+  .innerJoin('challenges', 'fb_id', 'user_id')
+  .innerJoin('challenge_templates', 'challenges.challenge_id', 'challenge_templates.id')
+
+}
+
 function getByName (name) {
   let first_name = name.split(' ')[0] || 'b'
   let last_name = name.split(' ')[1] || 'a'
@@ -77,6 +86,8 @@ function getByName (name) {
   .from('users')
   .where('first_name', first_name)
   .andWhere('last_name', last_name)
+  .orWhere('first_name', first_name)
+  .orWhere('last_name', last_name)
   .orWhere('last_name', first_name)
   .orWhere('first_name', last_name)
 }
@@ -92,5 +103,6 @@ module.exports = {
   postChallenge_template,
   updateChallenge,
   getAllChallenges,
+  getAllUserData,
   getByName
 };

@@ -1,12 +1,27 @@
 const express = require('express');
 const router = express.Router();
 const knex = require('../db/knex');
-const {getOne, getAll, del, postChallenge, updateChallenge, getAllChallenges} = require('../queries/queries');
+const {getOne, getAll, del, postChallenge, updateChallenge, getAllChallenges, getAllUserData } = require('../queries/queries');
 
 router.get('/', (req, res, next) => {
   getAll('challenges')
   .then((data) => {
     res.json({data: data});
+  });
+});
+
+router.get('/allUserData/:id', (req, res, next) => {
+  getAllUserData(req.params.id)
+  .then(data => {
+    res.status(200).json({
+      data: data,
+      message: 'success!'
+    });
+  })
+  .catch((err) => {
+    res.status(404).json({
+      err: err
+    });
   });
 });
 
