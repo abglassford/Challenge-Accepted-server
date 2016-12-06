@@ -21,6 +21,8 @@ function postUser (body) {
   return knex('users')
   .insert({
     fb_id: body.fb_id,
+    first_name: body.first_name.toLowerCase(),
+    last_name: body.last_name.toLowerCase(),
     email: body.email
   });
 }
@@ -68,6 +70,18 @@ function getAllChallenges (user_id) {
   .innerJoin('challenge_templates', 'challenge_id', 'challenges.id');
 }
 
+function getByName (name) {
+  let first_name = name.split(' ')[0] || 'b'
+  let last_name = name.split(' ')[1] || 'a'
+  return knex.select('*')
+  .from('users')
+  .orWhere('first_name', first_name)
+  .orWhere('last_name', last_name)
+  .orWhere('last_name', first_name)
+  .orWhere('first_name', last_name)
+}
+
+
 module.exports = {
   getOne,
   getAll,
@@ -77,5 +91,6 @@ module.exports = {
   postChallenge,
   postChallenge_template,
   updateChallenge,
-  getAllChallenges
+  getAllChallenges,
+  getByName
 };

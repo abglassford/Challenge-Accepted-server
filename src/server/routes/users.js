@@ -32,12 +32,12 @@ router.delete('/:id', (req, res, next) => {
 });
 
 router.post('/', (req, res, next) => {
-  console.log(req.body);
   postUser(req.body)
   .then(() => {
     res.status(200).json({message: 'success!'});
   })
   .catch((err) => {
+    console.log(err);
     res.status(404).json({
       message: 'Something went wrong',
       data: err
