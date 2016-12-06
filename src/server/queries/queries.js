@@ -65,7 +65,7 @@ function updateChallenge (body) {
 function getAllChallenges (user_id) {
   return knex.select('*')
   .from('challenges')
-  .innerJoin('challenge_templates', 'challenge_id', 'challenges.id')
+  .innerJoin('challenge_templates', 'challenge_id', 'challenges.id');
 }
 
 module.exports = {

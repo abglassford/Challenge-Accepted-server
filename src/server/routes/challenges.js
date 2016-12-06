@@ -17,15 +17,15 @@ router.get('/allchallenges/:id', (req, res, next) => {
     res.status(200).json({
       data: data,
       message: 'success!'
-    })
+    });
   })
   .catch((err) => {
     console.log(err);
     res.status(404).json({
       err: err
-    })
-  })
-})
+    });
+  });
+});
 
 router.get('/userChallenge/:id', (req, res, next) => {
   knex.select('*')
@@ -36,14 +36,14 @@ router.get('/userChallenge/:id', (req, res, next) => {
     res.status(200).json({
       data: data,
       message: 'got it!'
-    })
+    });
   })
   .catch((err) => {
     res.status(404).json({
       err: err
-    })
-  })
-})
+    });
+  });
+});
 
 router.get('/:id', (req, res, next) => {
   getOne('challenges', req.params.id, 'id')
