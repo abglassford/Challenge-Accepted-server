@@ -75,8 +75,8 @@ function getByName (name) {
   let last_name = name.split(' ')[1] || 'a'
   return knex.select('*')
   .from('users')
-  .orWhere('first_name', first_name)
-  .orWhere('last_name', last_name)
+  .where('first_name', first_name)
+  .andWhere('last_name', last_name)
   .orWhere('last_name', first_name)
   .orWhere('first_name', last_name)
 }

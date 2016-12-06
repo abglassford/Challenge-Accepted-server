@@ -13,13 +13,13 @@ router.get('/', (req, res, next) => {
   });
 });
 
-router.get('/:name', (req, res, next) => {  
+router.get('/:name', (req, res, next) => {
+  console.log('name',req.params.name);
   getByName(req.params.name)
   .then((data) => {
     res.json({data: data});
   })
   .catch(err => {
-    console.log(err);
     res.status(404).json({err: err});
   });
 });
