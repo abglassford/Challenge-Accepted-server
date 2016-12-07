@@ -23,7 +23,8 @@ function postUser (body) {
     fb_id: body.fb_id,
     first_name: body.first_name.toLowerCase(),
     last_name: body.last_name.toLowerCase(),
-    email: body.email
+    email: body.email,
+    photo: body.photo
   });
 }
 
@@ -50,7 +51,8 @@ function postChallenge_template (body) {
   .insert({
     name: body.name,
     description: body.description,
-    points: body.points
+    points: body.points,
+    creator: body.creator
   });
 }
 

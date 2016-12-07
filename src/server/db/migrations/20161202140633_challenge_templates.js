@@ -5,6 +5,7 @@ exports.up = function(knex, Promise) {
     table.string('name').notNullable();
     table.text('description').notNullable();
     table.integer('points').notNullable();
+    table.string('creator').notNullable();
   });
 };
 
