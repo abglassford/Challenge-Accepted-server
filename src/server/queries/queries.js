@@ -80,6 +80,7 @@ function getAllChallenges (user_id) {
 }
 
 function getAllUserData (user_id) {
+  console.log('hit getAllUserData');
   return knex.select('*')
   .from('users')
   .where('fb_id', user_id)

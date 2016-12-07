@@ -13,12 +13,14 @@ router.get('/', (req, res, next) => {
 router.get('/allUserData/:id', (req, res, next) => {
   getAllUserData(req.params.id)
   .then(data => {
+    console.log(data);
     res.status(200).json({
       data: data,
       message: 'success!'
     });
   })
   .catch((err) => {
+    console.log(err);
     res.status(404).json({
       err: err
     });
