@@ -47,12 +47,18 @@ function postChallenge (body) {
 }
 
 function postChallenge_template (body) {
+  console.log(body);
   return knex('challenge_templates')
   .insert({
     name: body.name,
     description: body.description,
     points: body.points,
-    creator: body.creator
+    creator: body.creator,
+    step1: body.step1,
+    step2: body.step2,
+    step3: body.step3,
+    step4: body.step4,
+    step5: body.step5
   });
 }
 
@@ -61,7 +67,8 @@ function updateChallenge (body) {
   .where('challenge_id', body.challenge_id)
   .andWhere('user_id', body.user_id)
   .update({
-    progress: body.progress
+    progress: body.progress,
+    step1_complete: true
   })
   .returning('*');
 }

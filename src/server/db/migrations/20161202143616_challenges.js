@@ -5,6 +5,11 @@ exports.up = function(knex, Promise) {
     table.integer('challenge_id').notNullable();
     table.boolean('completed').notNullable();
     table.float('progress').notNullable();
+    table.boolean('step1_complete').notNullable().defaultTo(false);
+    table.boolean('step2_complete').notNullable().defaultTo(false);
+    table.boolean('step3_complete').notNullable().defaultTo(false);
+    table.boolean('step4_complete').notNullable().defaultTo(false);
+    table.boolean('step5_complete').notNullable().defaultTo(false);
   });
 };
 
