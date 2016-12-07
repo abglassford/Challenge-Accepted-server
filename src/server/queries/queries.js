@@ -85,7 +85,7 @@ function getAllUserData (user_id) {
   .from('users')
   .where('fb_id', user_id)
   .innerJoin('challenges', 'fb_id', 'user_id')
-  .innerJoin('challenge_templates', 'challenges.challenge_id', 'challenge_templates.id')
+  // .innerJoin('challenge_templates', 'challenges.challenge_id', 'challenge_templates.id')
 
 }
 
